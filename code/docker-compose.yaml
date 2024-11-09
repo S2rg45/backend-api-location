@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  app-location:
+    build: .
+    container_name: fastapi_app
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017
+      - REDIS_URI=redis://redis:6379/0
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=mongodb://mongo:27017/celery_results
+    depends_on:
+      - redis-location
+      - mongo-location
+
+  redis-location:
+    image: redis:6
+    container_name: redis
+    ports:
+      - "6378:6379"
+
+  mongo-location:
+    image: mongo:5
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: celery_results
+
+  celery-locations:
+    build: .
+    container_name: celery_worker
+    command: 
+      bash -c "cd app/adapters/internal && celery -A celery_adapter worker --loglevel=info"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017
+      - REDIS_URI=redis://redis:6379/0
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=mongodb://mongo:27017/celery_results
+    depends_on:
+      - redis-location
+      - mongo-location
