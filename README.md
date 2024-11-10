@@ -57,4 +57,4 @@ Se implementa una arquitectura de codigo hexagonal, implementado en POO
 
 ## URL repositorio
 
-[https://github.com/S2rg45/fin_backend_api.git](https://github.com/S2rg45/backend-api-location.git)
+[https://github.com/S2rg45/backend-api-location](https://github.com/S2rg45/backend-api-location.git)
