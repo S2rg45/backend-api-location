@@ -32,6 +32,32 @@ Se implementa una arquitectura de codigo hexagonal, implementado en POO
 
 ## Contexto del trabajo
 
+## Body para hacer pruebas
+
+    - { "locations":
+        [
+            {
+                "name":"trisl",
+                "latitude": "8.9760567978",
+                "longitude": "5.700796896"
+            },
+            {
+                "name":"illkod",
+                "latitude": "1.79477769",
+                "longitude": "3.47776556"
+            },
+            {
+                "name":"iollkd",
+                "latitude": "3.6566565477",
+                "longitude": "-5.589098"
+            }
+        ]
+    }
+
+    - Con ese Body se pueden hacer pruebas con una lista de locaciones 
+    
+
+
 | **Cargo**						 | **Nombre**		     |  
 |--------------------------------|-----------------------|
 | **Caso de Uso**  				 |                       |   
